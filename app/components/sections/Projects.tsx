@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
@@ -36,18 +37,38 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                     justifyContent: 'center',
                 }}
             >
+                {/* Render image if available */}
+                {project.image && typeof project.image === 'string' ? (
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                        }}
+                    />
+                ) : project.image ? (
+                    React.createElement(project.image)
+                ) : null}
+
                 {/* Watermark text — shown when no image */}
-                <span
-                    style={{
-                        fontSize: '11px',
-                        letterSpacing: '0.4em',
-                        color: '#3e3e3e',
-                        textTransform: 'uppercase',
-                        userSelect: 'none',
-                    }}
-                >
-                    SAFE API WORK
-                </span>
+                {!project.image && (
+                    <span
+                        style={{
+                            fontSize: '11px',
+                            letterSpacing: '0.4em',
+                            color: '#3e3e3e',
+                            textTransform: 'uppercase',
+                            userSelect: 'none',
+                        }}
+                    >
+                        SAFE API WORK
+                    </span>
+                )}
 
                 {/* Status badge */}
                 <div
@@ -187,13 +208,13 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    
+
                     <TypewriterText
-                    text="VIEW ALL WORKS →"
-                    tag="span"
-                    className="text-[11px] text-[#569cd6] letter-spacing-[0.05em]"
-                    speed={40}
-                />
+                        text="VIEW ALL WORKS →"
+                        tag="span"
+                        className="text-[11px] text-[#569cd6] letter-spacing-[0.05em]"
+                        speed={40}
+                    />
                 </a>
             </div>
 
