@@ -1,26 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: var(--font-mono);
+}
+
+/* Only lock scroll on desktop where we manage it ourselves */
+@media (min-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+/* Scrollbar styling for the editor panel */
+.editor-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-scroll::-webkit-scrollbar-track {
+  background: #0E0E0E;
+}
+
+.editor-scroll::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+.editor-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Blinking cursor */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* GPS dot pulse */
+@keyframes gps-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.gps-ping {
+  animation: gps-ping 2s ease-out infinite;
+}
+
+.gps-ping-delay {
+  animation: gps-ping 2s ease-out infinite 0.8s;
+}
+
+/* Selection color */
+::selection {
+  background: #264f78;
+  color: #fff;
+}
+
+/* Hide scrollbar on mobile tabs */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
