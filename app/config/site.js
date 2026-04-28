@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-04-28 | 19.41 P.M. | Added versioning information and updated the site version to 1.0.1
-export const SITE_VERSION = "1.0.1";
+// 2026-04-28 | 20:53 P.M. | Enhance project metadata and add sitemap and robots configuration
+export const SITE_VERSION = "1.0.2";

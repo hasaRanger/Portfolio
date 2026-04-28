@@ -6,6 +6,7 @@ import { useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import TypewriterText from '../../components/ui/TypewriterText'
 import { projects } from '../../data/projects'
+import Image from 'next/image'
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
     const ref = useRef(null)
@@ -39,16 +40,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             >
                 {/* Render image if available */}
                 {project.image && typeof project.image === 'string' ? (
-                    <img
+                    <Image
                         src={project.image}
                         alt={project.title}
+                        fill
                         style={{
-                            width: '100%',
-                            height: '100%',
                             objectFit: 'cover',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
                         }}
                     />
                 ) : project.image ? (
