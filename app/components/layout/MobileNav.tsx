@@ -282,7 +282,8 @@ export default function MobileNav() {
 
                 {/* ── Resume: direct download of /public/resume.pdf ── */}
                 <a
-                    href="https://drive.google.com/file/d/1WH1fALFKP_XXXPBB7mXujHj2LvTGpj7I/view?usp=sharing"
+                    href="/resume/NADEESHA HASARANGA_CV.pdf"
+                    target='_blank'
                     onClick={() => setSelected('resume')}
                     style={{
                         display: 'flex',

@@ -22,7 +22,7 @@ export default function TypewriterText({
     showCursor = false,
 }: Props) {
     const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: '-80px' })
+    const isInView = useInView(ref, { once: true, margin: '0px' })
     const { displayed, isDone } = useTypewriter({ text, speed, delay, isInView })
 
     return (

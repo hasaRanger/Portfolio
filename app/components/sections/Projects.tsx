@@ -10,7 +10,7 @@ import Image from 'next/image'
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
     const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: '-60px' })
+    const isInView = useInView(ref, { once: true, margin: '0px' })
 
     return (
         <div
@@ -20,7 +20,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                 transform: isInView ? 'translateY(0)' : 'translateY(24px)',
                 transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`,
                 border: '1px solid #2d2d2d',
-                padding: '32px',
+                padding: 'clamp(16px, 5vw, 32px)',
             }}
         >
             {/* Project image */}
@@ -216,11 +216,12 @@ export default function Projects() {
             </div>
 
             {/* Project list */}
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '24px',
-            }}>
+            <div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+                style={{
+                    gap: 'clamp(16px, 4vw, 24px)',
+                }}
+            >
                 {projects.map((project, i) => (
                     <ProjectCard key={project.id} project={project} index={i} />
                 ))}

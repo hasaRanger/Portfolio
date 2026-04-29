@@ -51,7 +51,7 @@ export default function Page() {
         {/* MOBILE main */}
         <main
           id="mobile-main"
-          className="editor-scroll"
+          className="editor-scroll overflow-x-hidden"
           style={{ flex: 1, overflowY: 'auto', backgroundColor: '#1e1e1e', paddingBottom: '52px' }}
         >
           <div style={{ padding: '24px 20px' }}>

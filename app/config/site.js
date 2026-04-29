@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-04-28 | 20:53 P.M. | Enhance project metadata and add sitemap and robots configuration
-export const SITE_VERSION = "1.0.2";
+// 2026-04-30 | 00:53 P.M. | Update resume link in sidebar, adjust project card styles, and add new resume PDF
+export const SITE_VERSION = "1.0.3";
