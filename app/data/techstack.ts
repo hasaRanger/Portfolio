@@ -25,7 +25,7 @@ export const techStack = {
     { name: 'MongoDB',   icon: 'mongodb'    },
     { name: 'MySQL',     icon: 'mysql'      },
     { name: 'Firebase',  icon: 'firebase'   },
-    { name: 'MairaDB',   icon: 'mariadb'    },
+    { name: 'MariaDB',   icon: 'mariadb'    },
   ],
   tools: [
     { name: 'Git',                 icon: 'git'          },

@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-04-30 | 00:53 P.M. | Update resume link in sidebar, adjust project card styles, and add new resume PDF
-export const SITE_VERSION = "1.0.3";
+// 2026-05-04 | 21:21 P.M. | Update project tags and status in Job Application Tracker, correct spelling of MariaDB, and enhance resume details
+export const SITE_VERSION = "1.0.4";
