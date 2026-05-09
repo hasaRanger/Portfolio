@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-05-04 | 21:21 P.M. | Update project tags and status in Job Application Tracker, correct spelling of MariaDB, and enhance resume details
-export const SITE_VERSION = "1.0.4";
+// 2026-05-09 | 11.08 A.M. | Add PostgreSQL and Prisma icons to TechStack, update tech stack data
+export const SITE_VERSION = "1.0.5";

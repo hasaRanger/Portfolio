@@ -16,7 +16,7 @@ const iconUrl = (icon: string) => {
     express:      `${DEVICON_BASE}/express/express-original.svg`,
     spring:       `${DEVICON_BASE}/spring/spring-original.svg`,
     java:         `${DEVICON_BASE}/java/java-original.svg`,
-    jaxrs:         `${DEVICON_BASE}/java/java-plain.svg`,
+    jaxrs:        `${DEVICON_BASE}/java/java-plain.svg`,
     mariadb:      `${DEVICON_BASE}/mariadb/mariadb-original.svg`,
     postman:      `${DEVICON_BASE}/postman/postman-original.svg`,
     vercel:       `${DEVICON_BASE}/vercel/vercel-original.svg`,
@@ -26,6 +26,8 @@ const iconUrl = (icon: string) => {
     premierpro:   `${DEVICON_BASE}/premierepro/premierepro-original.svg`,
     linux:        `${DEVICON_BASE}/linux/linux-original.svg`,
     git:          `${DEVICON_BASE}/git/git-original.svg`,
+    postgresql:   `${DEVICON_BASE}/postgresql/postgresql-original.svg`,
+    prisma:       `${DEVICON_BASE}/prisma/prisma-original.svg`,
   }
   return overrides[icon] ?? `${DEVICON_BASE}/${icon}/${icon}-original.svg`
 }

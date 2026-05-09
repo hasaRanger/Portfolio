@@ -22,15 +22,17 @@ export const techStack = {
 
   ],
   database: [
-    { name: 'MongoDB',   icon: 'mongodb'    },
-    { name: 'MySQL',     icon: 'mysql'      },
-    { name: 'Firebase',  icon: 'firebase'   },
-    { name: 'MariaDB',   icon: 'mariadb'    },
+    { name: 'MongoDB',      icon: 'mongodb'    },
+    { name: 'MySQL',        icon: 'mysql'      },
+    { name: 'PostgreSQL',   icon: 'postgresql' },
+    { name: 'Firebase',     icon: 'firebase'   },
+    { name: 'MariaDB',      icon: 'mariadb'    },
   ],
   tools: [
     { name: 'Git',                 icon: 'git'          },
     { name: 'Linux',               icon: 'linux'        },
     { name: 'Docker',              icon: 'docker'       },
+    { name: 'Prisma',              icon: 'prisma'       },
     { name: 'Postman',             icon: 'postman'      },
     { name: 'Vercel',              icon: 'vercel'       },
     { name: 'Digital Ocean',       icon: 'digitalocean' },
