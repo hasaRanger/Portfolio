@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-05-09 | 11.08 A.M. | Add PostgreSQL and Prisma icons to TechStack, update tech stack data
-export const SITE_VERSION = "1.0.5";
+// 2026-05-10 | 12.46 P.M. | Update resume link to direct Google Drive download in MobileNav and Sidebar components
+export const SITE_VERSION = "1.0.6";
