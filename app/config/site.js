@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-05-10 | 12.46 P.M. | Update resume link to direct Google Drive download in MobileNav and Sidebar components
-export const SITE_VERSION = "1.0.6";
+// 2026-05-20 | 21.00 P.M  |  Security headers added via vercel.json (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+export const SITE_VERSION = "1.1.0";
