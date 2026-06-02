@@ -28,6 +28,8 @@ const iconUrl = (icon: string) => {
     git:          `${DEVICON_BASE}/git/git-original.svg`,
     postgresql:   `${DEVICON_BASE}/postgresql/postgresql-original.svg`,
     prisma:       `${DEVICON_BASE}/prisma/prisma-original.svg`,
+    laravel:      `${DEVICON_BASE}/laravel/laravel-original.svg`,
+    vuejs:        `${DEVICON_BASE}/vuejs/vuejs-original.svg`,
   }
   return overrides[icon] ?? `${DEVICON_BASE}/${icon}/${icon}-original.svg`
 }

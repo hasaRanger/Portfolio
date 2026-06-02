@@ -8,6 +8,7 @@ export const techStack = {
   ],  
   frontend: [
     { name: 'React.js',     icon: 'react'        },
+    { name: 'Vue.js',       icon: 'vuejs'        },
     { name: 'Next.js',      icon: 'nextjs'       },
     { name: 'Vite',      icon: 'vite'       },
     { name: 'Tailwind CSS', icon: 'tailwindcss'  },
@@ -18,7 +19,8 @@ export const techStack = {
     { name: 'Node.js',           icon: 'nodejs'       },
     { name: 'Express.js',        icon: 'express'      },
     { name: 'SpringBoot',        icon: 'spring'       },
-    { name: 'JAX-RS',            icon: 'jaxrs'         },
+    { name: 'JAX-RS',            icon: 'jaxrs'        },
+    { name: 'Laravel',           icon: 'laravel'      },
 
   ],
   database: [
