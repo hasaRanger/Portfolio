@@ -1,7 +1,7 @@
 import CrackcodeImage from '../components/ui/projects/CrackcodeImage'
 import CustomerMgmtSys from '../components/ui/projects/CustomerMgmtSys'
 import JobAppTrack from '../components/ui/projects/JobAppTrack'
-import SmartCampus from '../components/ui/projects/SmartCampus'
+import NexusCRM from '../components/ui/projects/NexusCRM'
 
 export const projects = [
   {
@@ -36,11 +36,11 @@ export const projects = [
   },
   {
     id: 4,
-    title: 'Smart-Campus-Application',
-    description: 'A JAX-RS RESTful service for managing university rooms and hardware sensors using an in-memory, thread-safe data store.',
-    tags: ['Java', 'JAX-RS', 'Apache Tomcat'],
-    image: SmartCampus,
-    github: 'https://github.com/hasaRanger/Smart-Campus-Api',
+    title: 'NexusCRM',
+    description: 'A Laravel-powered CRM platform for managing customers, proposals, invoices, and payments with real-time analytics and Stripe integration.',
+    tags: ['Vue.js', 'Laravel', 'MySQL'],
+    image: NexusCRM,
+    github: 'https://github.com/hasaRanger/NexusCRM',
     live: null,
     status: 'source available',
   },
