@@ -14,14 +14,16 @@ export const techStack = {
     { name: 'Tailwind CSS', icon: 'tailwindcss'  },
     { name: 'HTML5',        icon: 'html5'        },
     { name: 'CSS',          icon: 'css3'         },
+    { name: 'Bootstrap',     icon: 'bootstrap'    },
   ],
   backend: [
     { name: 'Node.js',           icon: 'nodejs'       },
+    { name: 'Bun',               icon: 'bun'          },
     { name: 'Express.js',        icon: 'express'      },
     { name: 'SpringBoot',        icon: 'spring'       },
     { name: 'JAX-RS',            icon: 'jaxrs'        },
     { name: 'Laravel',           icon: 'laravel'      },
-
+    { name: 'Nginx',             icon: 'nginx'        },
   ],
   database: [
     { name: 'MongoDB',      icon: 'mongodb'    },
@@ -32,7 +34,9 @@ export const techStack = {
   ],
   tools: [
     { name: 'Git',                 icon: 'git'          },
-    { name: 'Linux',               icon: 'linux'        },
+    { name: 'GitHub Actions',    icon: 'githubactions' },
+    // { name: 'Linux',               icon: 'linux'        },
+    { name: 'Android Studio',      icon: 'androidstudio' },
     { name: 'Docker',              icon: 'docker'       },
     { name: 'Prisma',              icon: 'prisma'       },
     { name: 'Postman',             icon: 'postman'      },
@@ -42,5 +46,6 @@ export const techStack = {
     { name: 'Canva',               icon: 'canva'        },
     { name: 'Adobe Photoshop',     icon: 'photoshop'    },
     { name: 'Adobe Premier Pro',   icon: 'premierpro'    },
+    { name: 'Blender',             icon: 'blender'      },
   ],
 }

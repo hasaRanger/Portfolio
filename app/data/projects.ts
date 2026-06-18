@@ -38,7 +38,7 @@ export const projects = [
     id: 4,
     title: 'NexusCRM',
     description: 'A Laravel-powered CRM platform for managing customers, proposals, invoices, and payments with real-time analytics and Stripe integration.',
-    tags: ['Vue.js', 'Laravel', 'MySQL'],
+    tags: ['Vue.js', 'Laravel', 'MySQL', 'Stripe'],
     image: NexusCRM,
     github: 'https://github.com/hasaRanger/NexusCRM',
     live: null,
