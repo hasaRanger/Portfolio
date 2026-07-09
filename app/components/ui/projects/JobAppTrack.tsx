@@ -5,7 +5,7 @@ export default function CrackcodeImage() {
         <CldImage
             src="Job_Application_Tracker_wrhjfm"   // Replace with actual public_id from Cloudinary
             fill
-            alt="Crackcode Project"
+            alt="Job Application Tracker — Next.js job tracking dashboard"
             quality="auto"
             format="auto"
             crop="fill"

@@ -5,7 +5,7 @@ export default function CrackcodeImage() {
         <CldImage
             src="Customer_Management_System_e4dccq"   // Replace with actual public_id from Cloudinary
             fill
-            alt="Crackcode Project"
+            alt="Customer Management System — Java Spring Boot and MySQL CRUD app"
             quality="auto"
             format="auto"
             crop="fill"

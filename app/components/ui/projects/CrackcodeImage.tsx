@@ -5,7 +5,7 @@ export default function CrackcodeImage() {
         <CldImage
             src="Profile_Pic_q7dk7k"   // Replace with actual public_id from Cloudinary
             fill
-            alt="Crackcode Project"
+            alt="Crackcode - Narrative-driven Programming Learning Platform"
             quality="auto"
             format="auto"
             crop="fill"

@@ -5,7 +5,7 @@ export default function NexusCRMImage() {
         <CldImage
             src="NexusCRM_dfhfn0"   // Replace with actual public_id from Cloudinary
             fill
-            alt="NexusCRM Project"
+            alt="NexusCRM — customer relationship management system with Vue.js, Laravel and MySQL"
             quality="auto"
             format="auto"
             crop="fill"
