@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: NextRequest) {
     try {
-        const { firstName, lastName, email, subject, message } = await req.json()
+    const { firstName, lastName, email, subject, message, turnstileToken } = await req.json()
 
         // Basic validation
         if (!firstName || !email || !subject || !message) {
@@ -16,6 +16,29 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             )
         }
+
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
+    if (turnstileSecret && turnstileToken) {
+      const verification = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          secret: turnstileSecret,
+          response: turnstileToken,
+        }),
+      })
+
+      const result = await verification.json()
+
+      if (!result.success) {
+        return NextResponse.json(
+          { error: 'Security check failed. Please try again.' },
+          { status: 400 }
+        )
+      }
+    }
 
         const { error } = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>',
@@ -61,7 +84,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json({ success: true })
 
-    } catch (err) {
+    } catch {
         return NextResponse.json(
             { error: 'Internal server error' },
             { status: 500 }

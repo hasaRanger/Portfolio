@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion'
 import { motion } from 'framer-motion'
 import TypewriterText from '../../components/ui/TypewriterText'
 import { Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
+import { Turnstile } from '@marsidev/react-turnstile' // ✅ Fix 1: was `Tunrstile`
 
 interface FormState {
     firstName: string
@@ -40,6 +41,10 @@ const labelStyle = {
 export default function Contact() {
     const ref = useRef<HTMLElement | null>(null)
     const isInView = useInView(ref, { once: true, margin: '-60px' })
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+    const [turnstileToken, setTurnstileToken] = useState<string>('')
+
+    // ✅ Fix 2: removed the unconditional alert() that was here at render level
 
     const [form, setForm] = useState<FormState>({
         firstName: '',
@@ -67,6 +72,7 @@ export default function Contact() {
 
     const handleSubmit = async (e: React.MouseEvent) => {
         e.preventDefault()
+
         if (!form.firstName || !form.email || !form.subject || !form.message) {
             setStatus('error')
             setErrorMsg('Please fill in all required fields.')
@@ -80,7 +86,10 @@ export default function Contact() {
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form),
+                body: JSON.stringify({
+                    ...form,
+                        turnstileToken,
+                }),
             })
 
             const data = await res.json()
@@ -91,6 +100,7 @@ export default function Contact() {
 
             setStatus('success')
             setForm({ firstName: '', lastName: '', email: '', subject: '', message: '' })
+            setTurnstileToken('')
 
         } catch (err: unknown) {
             setStatus('error')
@@ -128,23 +138,17 @@ export default function Contact() {
                 />
             </div>
 
-            {/* HTML comment style subheading */}
-            {/* <p style={{ color: '#6a9955', fontSize: '12px', marginBottom: '40px' }}>
-                {'<!-- Get in Touch -->'}
-            </p> */}
             <TypewriterText
-                    text="<!-- Get in Touch -->"
-                    tag="p"
-                    className="text-[12px] text-[#6a9955] mb-10"
-                    delay={300}
-                    speed={50}
-                />
+                text="<!-- Get in Touch -->"
+                tag="p"
+                className="text-[12px] text-[#6a9955] mb-10"
+                delay={300}
+                speed={50}
+            />
 
             {/* Two-column layout */}
             <div
-                style={{
-                    gap: '48px',
-                }}
+                style={{ gap: '48px' }}
                 className="flex flex-col md:grid md:grid-cols-[1fr_1.4fr] md:items-start"
             >
                 {/* Left — big heading */}
@@ -188,7 +192,6 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.8, ease: 'easeOut' }}
                 >
-
                     {/* First + Last name row */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                         <div>
@@ -206,9 +209,7 @@ export default function Contact() {
                             />
                         </div>
                         <div>
-                            <label style={labelStyle}>
-                                Last name<span style={{ color: '#858585' }}></span>
-                            </label>
+                            <label style={labelStyle}>Last name</label>
                             <input
                                 name="lastName"
                                 value={form.lastName}
@@ -271,6 +272,20 @@ export default function Contact() {
                         />
                     </div>
 
+                    {/* Turnstile widget */}
+                    {turnstileSiteKey ? (
+                        <Turnstile
+                            siteKey={turnstileSiteKey}
+                            onSuccess={(token) => setTurnstileToken(token)}
+                            onExpire={() => setTurnstileToken('')}
+                            onError={() => {
+                                setTurnstileToken('')
+                                setStatus('error')
+                                setErrorMsg('Security check failed. Please refresh the page.')
+                            }}
+                        />
+                    ) : null}
+
                     {/* Error message */}
                     {status === 'error' && (
                         <div
@@ -328,7 +343,9 @@ export default function Contact() {
                             fontSize: '12px',
                             fontWeight: 600,
                             fontFamily: 'var(--font-mono)',
-                            cursor: status === 'loading' || status === 'success' ? 'not-allowed' : 'pointer',
+                            cursor: (status === 'loading' || status === 'success')
+                                ? 'not-allowed'
+                                : 'pointer',
                             opacity: status === 'loading' ? 0.7 : 1,
                             letterSpacing: '0.04em',
                             transition: 'opacity 0.15s, background-color 0.2s',
