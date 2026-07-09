@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Analytics } from "@vercel/analytics/next"
+import JsonLd from './components/JsonLd'
 
 const BASE_URL = 'https://nadeesha.dev'
 
@@ -96,6 +97,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <JsonLd />
+      </head>
       <body>
         {/* JSON-LD structured data — tells Google exactly who you are */}
         <script
