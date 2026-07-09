@@ -12,10 +12,11 @@ export default function JsonLd() {
       "addressLocality": "Kadawatha",
       "addressCountry": "LK"
     },
+    "inLanguages": ["English", "Sinhala"],
     "sameAs": [
       "https://github.com/hasaRanger",
       "https://twitter.com/NadeeshaHasara2",
-      "https://linkedin.com/in/YOUR_LINKEDIN_HANDLE"
+      "https://linkedin.com/in/nadeesha-hasaranga"
     ]
   }
   return (
