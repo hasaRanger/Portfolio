@@ -3,11 +3,12 @@
 import { X } from 'lucide-react'
 import GreenDot from '../../components/ui/GreenDot'
 import LiveClock from '../../components/ui/LiveClock'
-import { Info, FolderRoot, CodeXml, CircleUserRound } from 'lucide-react'
+import { Info, FolderRoot, CodeXml, CircleUserRound, BriefcaseBusiness } from 'lucide-react'
 import { useActiveFile } from '@/app/context/ActiveFileContext'
 
 const tabs = [
     { label: 'ABOUT.MD',    href: '#hero',      icon: <Info size={9} />,           color: '#4ec9b0' },
+    { label: 'EXPERIENCE.LOG', href: '#experience', icon: <BriefcaseBusiness size={9} />, color: '#6a9955' },
     { label: 'WORK.DONE',   href: '#projects',  icon: <FolderRoot size={9} />,     color: '#569cd6' },
     { label: 'TECH.STACK',  href: '#techstack', icon: <CodeXml size={9} />,        color: '#c586c0' },
     { label: 'CONTACT.ME',  href: '#contact',   icon: <CircleUserRound size={9} />, color: '#ce9178' },

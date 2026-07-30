@@ -1,6 +1,6 @@
 'use client'
 
-import { Files, Search, FileText, ChevronDown, ChevronRight, Info, FolderRoot, CodeXml, CircleUserRound } from 'lucide-react'
+import { Files, Search, FileText, ChevronDown, ChevronRight, Info, FolderRoot, CodeXml, CircleUserRound, BriefcaseBusiness } from 'lucide-react'
 import Logo from '../../../public/images/logo.png'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -26,6 +26,7 @@ const navIcons = [
 // ─── Explorer items ────────────────────────────────────────────────────────────
 const explorerItems: { label: FileLabel; href: string; color: string; icon: React.ReactNode }[] = [
     { label: 'About.md', href: '#hero', color: '#4ec9b0', icon: <Info size={14} /> },
+    { label: 'Experience.log', href: '#experience', color: '#6a9955', icon: <BriefcaseBusiness size={14} /> },
     { label: 'Work.done', href: '#projects', color: '#569cd6', icon: <FolderRoot size={14} /> },
     { label: 'Tech.stack', href: '#techstack', color: '#c586c0', icon: <CodeXml size={14} /> },
     { label: 'Contact.me', href: '#contact', color: '#ce9178', icon: <CircleUserRound size={14} /> },
