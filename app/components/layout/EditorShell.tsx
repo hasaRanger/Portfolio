@@ -6,9 +6,13 @@ import Projects from '../../components/sections/Projects'
 import TechStack from '../../components/sections/TechStack'
 import Contact from '../../components/sections/Contact'
 
+interface EditorShellProps {
+  turnstileSiteKey?: string
+}
+
 const LINE_HEIGHT = 20 // must match the span lineHeight in gutter
 
-export default function EditorShell() {
+export default function EditorShell({ turnstileSiteKey }: EditorShellProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   const [lineCount, setLineCount] = useState(100)
 
@@ -86,7 +90,7 @@ export default function EditorShell() {
           <Hero />
           <Projects />
           <TechStack />
-          <Contact />
+          <Contact turnstileSiteKey={turnstileSiteKey} />
         </div>
       </div>
     </main>

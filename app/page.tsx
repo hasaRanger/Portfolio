@@ -11,6 +11,8 @@ import { ActiveFileProvider } from './context/ActiveFileContext'
 import EditorShell from './components/layout/EditorShell'
 
 export default function Page() {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
   return (
     <ActiveFileProvider>
 
@@ -34,7 +36,7 @@ export default function Page() {
         </div>
 
         {/* EditorShell handles gutter + content + dynamic line count */}
-        <EditorShell />
+        <EditorShell turnstileSiteKey={turnstileSiteKey} />
 
         <div style={{ gridColumn: '2', gridRow: '3', zIndex: 50 }}>
           <StatusBar />
@@ -58,7 +60,7 @@ export default function Page() {
             <div id="m-hero"><Hero /></div>
             <div id="m-projects"><Projects /></div>
             <div id="m-techstack"><TechStack /></div>
-            <div id="m-contact"><Contact /></div>
+            <div id="m-contact"><Contact turnstileSiteKey={turnstileSiteKey} /></div>
           </div>
         </main>
 

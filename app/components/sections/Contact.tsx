@@ -15,6 +15,10 @@ interface FormState {
     message: string
 }
 
+interface ContactProps {
+    turnstileSiteKey?: string
+}
+
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
 const inputStyle = {
@@ -38,10 +42,9 @@ const labelStyle = {
     letterSpacing: '0.04em',
 }
 
-export default function Contact() {
+export default function Contact({ turnstileSiteKey }: ContactProps) {
     const ref = useRef<HTMLElement | null>(null)
     const isInView = useInView(ref, { once: true, margin: '-60px' })
-    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
     const [turnstileToken, setTurnstileToken] = useState<string>('')
 
     // ✅ Fix 2: removed the unconditional alert() that was here at render level
