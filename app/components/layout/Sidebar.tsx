@@ -203,12 +203,12 @@ export default function Sidebar() {
 
             {/* ── Icon strip — 48 px ─────────────────────────────────────────── */}
             <aside className="w-12 shrink-0 bg-[#262626] flex flex-col items-center justify-between py-2 border-r border-[#827a7a4d]">
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-2">
 
                     {/* Logo */}
                     <button
                         onClick={() => scrollTo('#hero', 'About.md')}
-                        className="w-10 h-10 flex items-center justify-center text-[#cccccc] hover:text-white mb-2"
+                        className="w-10 h-10 flex items-center justify-center text-[#cccccc] hover:text-white"
                     >
                         <Image
                             src={Logo}
@@ -252,13 +252,13 @@ export default function Sidebar() {
                 {activeIcon === 0 && (
                     <div className="flex flex-col h-full">
                         <div className="flex-1 overflow-y-auto">
-                            <span className="text-[#bbbbbb] text-[10px] font-medium tracking-widest uppercase pt-3 px-3 mb-2 block">
+                            <span className="text-[#bbbbbb] text-[10px] font-medium tracking-widest uppercase pt-3 px-3 mb-3 block">
                                 Explorer
                             </span>
 
                             <button
                                 onClick={() => setExplorerOpen(o => !o)}
-                                className="flex items-center gap-1 w-full text-left hover:bg-[#2a2d2e] transition-colors px-2 mb-1"
+                                className="flex items-center gap-1 w-full text-left hover:bg-[#2a2d2e] transition-colors px-2 mb-2"
                             >
                                 {explorerOpen
                                     ? <ChevronDown size={13} className="text-[#cccccc] shrink-0" />
@@ -270,7 +270,7 @@ export default function Sidebar() {
                             </button>
 
                             {explorerOpen && (
-                                <div className="flex flex-col gap-1 pl-7 pr-2">
+                                <div className="flex flex-col gap-2 pl-7 pr-2">
                                     {explorerItems.map(({ label, href, color, icon }) => (
                                         <button
                                             key={label}
