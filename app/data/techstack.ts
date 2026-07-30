@@ -31,6 +31,7 @@ export const techStack = {
     { name: 'PostgreSQL',   icon: 'postgresql' },
     { name: 'Firebase',     icon: 'firebase'   },
     { name: 'MariaDB',      icon: 'mariadb'    },
+    { name: 'Prisma',       icon: 'prisma'     },
   ],
   tools: [
     { name: 'Git',                 icon: 'git'          },
@@ -38,7 +39,6 @@ export const techStack = {
     // { name: 'Linux',               icon: 'linux'        },
     { name: 'Android Studio',      icon: 'androidstudio' },
     { name: 'Docker',              icon: 'docker'       },
-    { name: 'Prisma',              icon: 'prisma'       },
     { name: 'Postman',             icon: 'postman'      },
     { name: 'Vercel',              icon: 'vercel'       },
     { name: 'Digital Ocean',       icon: 'digitalocean' },
