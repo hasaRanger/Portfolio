@@ -8,7 +8,7 @@ import { useActiveFile } from '@/app/context/ActiveFileContext'
 
 const tabs = [
     { label: 'ABOUT.MD',    href: '#hero',      icon: <Info size={9} />,           color: '#4ec9b0' },
-    { label: 'EXPERIENCE.LOG', href: '#experience', icon: <BriefcaseBusiness size={9} />, color: '#6a9955' },
+    // { label: 'EXPERIENCE.LOG', href: '#experience', icon: <BriefcaseBusiness size={9} />, color: '#6a9955' },
     { label: 'WORK.DONE',   href: '#projects',  icon: <FolderRoot size={9} />,     color: '#569cd6' },
     { label: 'TECH.STACK',  href: '#techstack', icon: <CodeXml size={9} />,        color: '#c586c0' },
     { label: 'CONTACT.ME',  href: '#contact',   icon: <CircleUserRound size={9} />, color: '#ce9178' },

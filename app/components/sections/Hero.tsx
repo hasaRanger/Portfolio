@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import TypewriterText from '../../components/ui/TypewriterText'
-import DecryptedText from '../ui/DecryptedText'
+import { EncryptedText } from "@/components/ui/encrypted-text";
 import Portrait from '../ui/Portrait'
 
 export default function Hero() {
@@ -58,18 +58,26 @@ export default function Hero() {
                             justifyContent: 'center',
                         }}
                     >
-                        <TypewriterText
+                        {/* <TypewriterText
                             text="Fullstack_Dev"
                             tag='span'
                             className="text-black text-md font-semibold tracking-widest uppercase"
                             delay={800}
                             speed={100}
+                        /> */}
+
+                        <EncryptedText
+                            text="Fullstack_Dev"
+                            className="text-black text-md font-semibold tracking-widest uppercase"
+                            startDelayMs={500}
+                            revealDelayMs={100}
                         />
+
                     </div>
                 </motion.div>
 
                 {/* Name + bio + socials */}
-                <div className="flex flex-col justify-center gap-10 text-center md:text-left">
+                <div className="flex flex-col justify-center gap-10 text-center md:text-left h-[500px] md:h-[400px]">
 
                     {/* Name */}
                     <TypewriterText
@@ -84,43 +92,43 @@ export default function Hero() {
                     <TypewriterText
                         text="Architecting digital solutions through clean code and scalable architecture. Focused on building high-performance web applications with a technical precision that rivals machine logic."
                         tag="p"
-                        className="md:text-md text-[#858585] leading-relaxed md:max-w-xl"
+                        className="md:text-md text-[#858585] leading-relaxed md:max-w-xl h-[100px]"
                         delay={1000}
                         speed={12}
                     />
 
                     {/* ── Stats ── */}
                     <div className="flex item-center gap-20 mb-16 border-t border-[#2d2d2d] pt-8 font-mono">
-                        <div className="flex flex-col gap-1 ">
-                            <TypewriterText
+                        {/* Experience block */}
+                        <div className="flex w-[190px] shrink-0 flex-col gap-1">
+                            <EncryptedText
                                 text="2+"
-                                tag="span"
                                 className="text-6xl font-bold text-[#d4d4d4]"
-                                delay={1800}
-                                speed={80}
+                                revealDelayMs={100}
+                                startDelayMs={1800}
                             />
                             <TypewriterText
                                 text="Years Experience"
                                 tag="span"
                                 className="text-md uppercase tracking-widest text-[#858585]"
                                 delay={1800}
-                                speed={80}
+                                speed={50}
                             />
                         </div>
-                        <div className="flex flex-col gap-1">
-                            <TypewriterText
+                        {/* Projects block */}
+                        <div className="flex w-[200px] shrink-0 flex-col gap-1">
+                            <EncryptedText
                                 text="10+"
-                                tag="span"
                                 className="text-6xl font-bold text-[#d4d4d4]"
-                                delay={2100}
-                                speed={80}
+                                revealDelayMs={100}
+                                startDelayMs={2100}
                             />
                             <TypewriterText
                                 text="Projects Delivered"
                                 tag="span"
                                 className="text-md uppercase tracking-widest text-[#858585]"
                                 delay={2100}
-                                speed={80}
+                                speed={50}
                             />
                         </div>
                     </div>
