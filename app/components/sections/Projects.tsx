@@ -69,6 +69,13 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
                 {/* Status badge */}
                 <div
+                    title={
+                        project.status === 'live' 
+                            ? 'Live' 
+                            : project.status === 'source available' 
+                                ? 'Source Available' 
+                                : 'Work in Progress'
+                    }
                     style={{
                         position: 'absolute',
                         top: '10px',
@@ -112,6 +119,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                     speed={30}
                 />
                 <a
+                    title={project.status === 'live' ? 'View Project' : "View Source"}
                     href={project.live ?? project.github}
                     target="_blank"
                     rel="noopener noreferrer"
