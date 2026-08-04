@@ -18,5 +18,5 @@
  * - 1.2.3 (restructure API) → 2.0.0 (major version bump)
  */
 
-// 2026-06-02 | 19.58 P.M  | update tech stack with Vue.js and Laravel
-export const SITE_VERSION = "1.1.1";
+// 2026-08-04 | 12.55 P.M  | enhance social links with devicons and fallback handling
+export const SITE_VERSION = "1.1.2";
