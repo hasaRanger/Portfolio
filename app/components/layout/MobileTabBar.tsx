@@ -6,11 +6,20 @@ import GreenDot from '../../components/ui/GreenDot'
 import LiveClock from '../../components/ui/LiveClock'
 import Logo from '../../../public/images/logo.png'
 
+const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
+
+const materialIconUrls: Record<string, string> = {
+    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
+    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
+    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
+    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
+}
+
 const tabs = [
-  { label: 'ABOUT.MD',   id: 'm-hero'      },
-  { label: 'WORK.DONE',  id: 'm-projects'  },
-  { label: 'TECH.STACK', id: 'm-techstack' },
-  { label: 'CONTACT.ME', id: 'm-contact'   },
+  { label: 'About.md',   id: 'm-hero',      icon: <Image src={materialIconUrls.codeowner} alt="About" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
+  { label: 'Work.done',  id: 'm-projects',  icon: <Image src={materialIconUrls.folder_project} alt="Work" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
+  { label: 'Tech.stack', id: 'm-techstack', icon: <Image src={materialIconUrls.folder_controller} alt="Tech" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
+  { label: 'Contact.me', id: 'm-contact',   icon: <Image src={materialIconUrls.folder_contract} alt="Contact" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
 ]
 
 export default function MobileTabBar() {
@@ -103,7 +112,7 @@ export default function MobileTabBar() {
               cursor: 'pointer', transition: 'all 0.15s',
             }}
           >
-            <span style={{ color: '#4ec9b0', fontSize: '8px' }}>◆</span>
+            {tab.icon}
             {tab.label}
           </button>
         ))}

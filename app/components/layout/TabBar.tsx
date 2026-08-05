@@ -3,15 +3,24 @@
 import { X } from 'lucide-react'
 import GreenDot from '../../components/ui/GreenDot'
 import LiveClock from '../../components/ui/LiveClock'
-import { Info, FolderRoot, CodeXml, CircleUserRound, BriefcaseBusiness } from 'lucide-react'
+import Image from 'next/image'
 import { useActiveFile } from '@/app/context/ActiveFileContext'
 
+const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
+
+const materialIconUrls: Record<string, string> = {
+    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
+    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
+    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
+    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
+}
+
 const tabs = [
-    { label: 'ABOUT.MD',    href: '#hero',      icon: <Info size={9} />,           color: '#4ec9b0' },
+    { label: 'About.md', href: '#hero', icon: <Image src={materialIconUrls.codeowner} alt="About" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
     // { label: 'EXPERIENCE.LOG', href: '#experience', icon: <BriefcaseBusiness size={9} />, color: '#6a9955' },
-    { label: 'WORK.DONE',   href: '#projects',  icon: <FolderRoot size={9} />,     color: '#569cd6' },
-    { label: 'TECH.STACK',  href: '#techstack', icon: <CodeXml size={9} />,        color: '#c586c0' },
-    { label: 'CONTACT.ME',  href: '#contact',   icon: <CircleUserRound size={9} />, color: '#ce9178' },
+    { label: 'Work.done', href: '#projects', icon: <Image src={materialIconUrls.folder_project} alt="Work" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
+    { label: 'Tech.stack', href: '#techstack', icon: <Image src={materialIconUrls.folder_controller} alt="Tech" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
+    { label: 'Contact.me', href: '#contact', icon: <Image src={materialIconUrls.folder_contract} alt="Contact" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
 ]
 
 export default function TabBar() {
@@ -42,7 +51,7 @@ export default function TabBar() {
                             }
             `}
                     >
-                        <span className="text-[9px]" style={{ color: tab.color }}>{tab.icon}</span>
+                        <span className="text-[9px]">{tab.icon}</span>
                         {tab.label}
                         <X
                             size={11}

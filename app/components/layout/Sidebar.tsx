@@ -18,7 +18,15 @@ interface SocialLink {
     border?: string
 }
 
+const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
 const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
+
+const materialIconUrls: Record<string, string> = {
+    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
+    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
+    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
+    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
+}
 
 const deviconUrls: Record<string, string> = {
     github: `${DEVICON_BASE}/github/github-original.svg`,
@@ -43,7 +51,7 @@ function DeviconOrFallback({ devicon, fallback, name }: { devicon?: string, fall
             alt={name}
             width={18}
             height={18}
-            className="w-[18px] h-[18px] object-contain shrink-0"
+            className="w-4.5 h-4.5 object-contain shrink-0"
             onError={() => setError(true)}
             unoptimized
         />
@@ -58,11 +66,11 @@ const navIcons = [
 
 // ─── Explorer items ────────────────────────────────────────────────────────────
 const explorerItems: { label: FileLabel; href: string; color: string; icon: React.ReactNode }[] = [
-    { label: 'About.md', href: '#hero', color: '#4ec9b0', icon: <Info size={14} /> },
+    { label: 'About.md', href: '#hero', color: '#4ec9b0', icon: <Image src={materialIconUrls.codeowner} alt="Codeowner" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
     // { label: 'Experience.log', href: '#experience', color: '#6a9955', icon: <BriefcaseBusiness size={14} /> },
-    { label: 'Work.done', href: '#projects', color: '#569cd6', icon: <FolderRoot size={14} /> },
-    { label: 'Tech.stack', href: '#techstack', color: '#c586c0', icon: <CodeXml size={14} /> },
-    { label: 'Contact.me', href: '#contact', color: '#ce9178', icon: <CircleUserRound size={14} /> },
+    { label: 'Work.done', href: '#projects', color: '#569cd6', icon: <Image src={materialIconUrls.folder_project} alt="Folder Project" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
+    { label: 'Tech.stack', href: '#techstack', color: '#c586c0', icon: <Image src={materialIconUrls.folder_controller} alt="Folder Controller" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
+    { label: 'Contact.me', href: '#contact', color: '#ce9178', icon: <Image src={materialIconUrls.folder_contract} alt="Folder Contract" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
 ]
 
 // ─── Social links ──────────────────────────────────────────────────────────────
