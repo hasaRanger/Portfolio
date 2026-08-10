@@ -13,176 +13,262 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
     const isInView = useInView(ref, { once: true, margin: '0px' })
 
     return (
-        <div
-            ref={ref}
+      <div
+        ref={ref}
+        className="flex flex-col gap-5 md:flex-row"
+        style={{
+          opacity: isInView ? 1 : 0,
+          transform: isInView ? "translateY(0)" : "translateY(24px)",
+          transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`,
+          border: "1px solid #2d2d2d",
+          padding: "clamp(16px, 5vw, 32px)",
+        }}
+      >
+        <div className="flex flex-col gap-5 md:mr-6" style={{ minWidth: "400px" }}>
+          {/* Project image and status */}
+          <div
+            className="w-100 shrink-0"
             style={{
-                opacity: isInView ? 1 : 0,
-                transform: isInView ? 'translateY(0)' : 'translateY(24px)',
-                transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`,
-                border: '1px solid #2d2d2d',
-                padding: 'clamp(16px, 5vw, 32px)',
+              height: "250px",
+              backgroundColor: "#2d2d2d",
+              border: "1px solid #3e3e3e",
+              position: "relative",
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-        >
-            {/* Project image */}
-            <div
+          >
+            {/* Render image if available */}
+            {project.image && typeof project.image === "string" ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
                 style={{
-                    width: '100%',
-                    height: '180px',
-                    backgroundColor: '#2d2d2d',
-                    border: '1px solid #3e3e3e',
-                    marginBottom: '20px',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                  objectFit: "cover",
                 }}
+              />
+            ) : project.image ? (
+              React.createElement(project.image)
+            ) : null}
+
+            {/* Watermark text — shown when no image */}
+            {!project.image && (
+              <span
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.4em",
+                  color: "#3e3e3e",
+                  textTransform: "uppercase",
+                  userSelect: "none",
+                }}
+              >
+                SAFE API WORK
+              </span>
+            )}
+
+            {/* Status badge */}
+            <div
+              title={
+                project.status === "live"
+                  ? "Live"
+                  : project.status === "source available"
+                    ? "Source Available"
+                    : "Work in Progress"
+              }
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                padding: "2px 8px",
+                fontSize: "9px",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                backgroundColor:
+                  project.status === "live"
+                    ? "#0e4429"
+                    : project.status === "source available"
+                      ? "#0b2f4f"
+                      : "#3d2e00",
+                color:
+                  project.status === "live"
+                    ? "#3fb950"
+                    : project.status === "source available"
+                      ? "#58a6ff"
+                      : "#d29922",
+                border: `1px solid ${
+                  project.status === "live"
+                    ? "#238636"
+                    : project.status === "source available"
+                      ? "#1f6feb"
+                      : "#9e6a03"
+                }`,
+                borderRadius: "2px",
+              }}
             >
-                {/* Render image if available */}
-                {project.image && typeof project.image === 'string' ? (
-                    <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        style={{
-                            objectFit: 'cover',
-                        }}
-                    />
-                ) : project.image ? (
-                    React.createElement(project.image)
-                ) : null}
-
-                {/* Watermark text — shown when no image */}
-                {!project.image && (
-                    <span
-                        style={{
-                            fontSize: '11px',
-                            letterSpacing: '0.4em',
-                            color: '#3e3e3e',
-                            textTransform: 'uppercase',
-                            userSelect: 'none',
-                        }}
-                    >
-                        SAFE API WORK
-                    </span>
-                )}
-
-                {/* Status badge */}
-                <div
-                    title={
-                        project.status === 'live' 
-                            ? 'Live' 
-                            : project.status === 'source available' 
-                                ? 'Source Available' 
-                                : 'Work in Progress'
-                    }
-                    style={{
-                        position: 'absolute',
-                        top: '10px',
-                        right: '10px',
-                        padding: '2px 8px',
-                        fontSize: '9px',
-                        fontWeight: 600,
-                        letterSpacing: '0.08em',
-                        backgroundColor:
-                            project.status === 'live'
-                                ? '#0e4429'
-                                : project.status === 'source available'
-                                    ? '#0b2f4f'
-                                    : '#3d2e00',
-                        color:
-                            project.status === 'live'
-                                ? '#3fb950'
-                                : project.status === 'source available'
-                                    ? '#58a6ff'
-                                    : '#d29922',
-                        border: `1px solid ${project.status === 'live'
-                            ? '#238636'
-                            : project.status === 'source available'
-                                ? '#1f6feb'
-                                : '#9e6a03'
-                            }`,
-                        borderRadius: '2px',
-                    }}
-                >
-                    {project.status === 'live' ? '● LIVE' : project.status === 'source available' ? '◎ SA' : '◐ WIP'}
-                </div>
+              {project.status === "live"
+                ? "● LIVE"
+                : project.status === "source available"
+                  ? "◎ SA"
+                  : "◐ WIP"}
             </div>
+          </div>
 
-            {/* Title row */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <TypewriterText
-                    text={project.title}
-                    tag="h3"
-                    className="text-base font-bold text-[#d4d4d4]"
-                    delay={index * 100}
-                    speed={30}
-                />
-                <a
-                    title={project.status === 'live' ? 'View Project' : "View Source"}
-                    href={project.live ?? project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '28px',
-                        height: '28px',
-                        border: '1px solid #3e3e3e',
-                        color: '#858585',
-                        flexShrink: 0,
-                        marginLeft: '12px',
-                        transition: 'color 0.15s, border-color 0.15s',
-                    }}
-                    onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.color = '#cccccc'
-                            ; (e.currentTarget as HTMLElement).style.borderColor = '#555'
-                    }}
-                    onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.color = '#858585'
-                            ; (e.currentTarget as HTMLElement).style.borderColor = '#3e3e3e'
-                    }}
-                >
-                    <ArrowUpRight size={14} strokeWidth={1.5} />
-                </a>
-            </div>
-
-            {/* Description */}
-            <TypewriterText
-                text={project.description}
-                tag="p"
-                className="text-sm text-[#858585] leading-relaxed mb-3.5"
-                delay={index * 100 + 200}
-                speed={8}
-            />
-
+          <div className="flex items-start justify-between gap-2 max-w-100">
             {/* Tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {project.tags.map((tag, tagIndex) => (
-                    <span
-                        key={tag}
-                        style={{
-                            padding: '2px 10px',
-                            fontSize: '11px',
-                            backgroundColor: '#2d2d2d',
-                            border: '1px solid #3e3e3e',
-                            borderRadius: '2px',
-                            fontFamily: 'var(--font-mono)',
-                        }}
-                    >
-                        <TypewriterText
-                            text={tag}
-                            tag="span"
-                            className="text-[#9cdcfe]"
-                            delay={index * 100 + 400 + tagIndex * 50}
-                            speed={15}
-                        />
-                    </span>
+                <span
+                    key={tag}
+                    style={{
+                        width: "fit-content",
+                        padding: "2px 10px",
+                        fontSize: "11px",
+                        backgroundColor: "#2d2d2d",
+                        border: "1px solid #3e3e3e",
+                        borderRadius: "2px",
+                    fontFamily: "var(--font-mono)",
+                    }}
+                >
+                    <TypewriterText
+                    text={tag}
+                    tag="span"
+                    className="text-[#9cdcfe]"
+                    delay={index * 100 + 400 + tagIndex * 50}
+                    speed={15}
+                    />
+                </span>
                 ))}
             </div>
+            <a
+              title={project.status === "live" ? "View Project" : "View Source"}
+              href={project.live ?? project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "28px",
+                height: "28px",
+                border: "1px solid #3e3e3e",
+                color: "#858585",
+                flexShrink: 0,
+                marginLeft: "12px",
+                transition: "color 0.15s, border-color 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "#cccccc";
+                (e.currentTarget as HTMLElement).style.borderColor = "#555";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "#858585";
+                (e.currentTarget as HTMLElement).style.borderColor = "#3e3e3e";
+              }}
+            >
+              <ArrowUpRight size={14} strokeWidth={1.5} />
+            </a>
+          </div>
+          
         </div>
-    )
+
+        {/* Project details */}
+        <div className="min-w-0 flex-1">
+          {/* Title row */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              marginBottom: "10px",
+            }}
+          >
+            <TypewriterText
+              text={project.title}
+              tag="h3"
+              className="text-base font-bold text-[#d4d4d4]"
+              delay={index * 100}
+              speed={30}
+            />
+            {/* <a
+              title={project.status === "live" ? "View Project" : "View Source"}
+              href={project.live ?? project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "28px",
+                height: "28px",
+                border: "1px solid #3e3e3e",
+                color: "#858585",
+                flexShrink: 0,
+                marginLeft: "12px",
+                transition: "color 0.15s, border-color 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "#cccccc";
+                (e.currentTarget as HTMLElement).style.borderColor = "#555";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "#858585";
+                (e.currentTarget as HTMLElement).style.borderColor = "#3e3e3e";
+              }}
+            >
+              <ArrowUpRight size={14} strokeWidth={1.5} />
+            </a> */}
+          </div>
+
+          {/* Description */}
+          <TypewriterText
+            text={project.description}
+            tag="p"
+            className="text-sm text-[#858585] leading-relaxed mb-3.5"
+            delay={index * 100 + 200}
+            speed={8}
+          />
+
+          {/* Points */}
+          {project.points && (
+            <div style={{ marginBottom: "16px" }}>
+              <TypewriterText
+                text={project.points.trim()}
+                tag="p"
+                className="whitespace-pre-line text-sm text-[#858585] leading-relaxed"
+                delay={index * 100 + 1200}
+                speed={8}
+              />
+            </div>
+          )}
+
+          {/* Tags */}
+          {/* <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {project.tags.map((tag, tagIndex) => (
+              <span
+                key={tag}
+                style={{
+                  padding: "2px 10px",
+                  fontSize: "11px",
+                  backgroundColor: "#2d2d2d",
+                  border: "1px solid #3e3e3e",
+                  borderRadius: "2px",
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                <TypewriterText
+                  text={tag}
+                  tag="span"
+                  className="text-[#9cdcfe]"
+                  delay={index * 100 + 400 + tagIndex * 50}
+                  speed={15}
+                />
+              </span>
+            ))}
+          </div> */}
+        </div>
+      </div>
+    );
 }
 
 export default function Projects() {
@@ -225,7 +311,7 @@ export default function Projects() {
 
             {/* Project list */}
             <div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+                className="grid grid-rows-1 md:grid-rows-2 lg:grid-rows-4"
                 style={{
                     gap: 'clamp(16px, 4vw, 24px)',
                 }}
