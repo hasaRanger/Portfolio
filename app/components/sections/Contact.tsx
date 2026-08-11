@@ -196,7 +196,7 @@ export default function Contact({ turnstileSiteKey }: ContactProps) {
                     transition={{ duration: 0.8, delay: 1.8, ease: 'easeOut' }}
                 >
                     {/* First + Last name row */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label style={labelStyle}>
                                 First name<span style={{ color: '#ce9178' }}>*</span>

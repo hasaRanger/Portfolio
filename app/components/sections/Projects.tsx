@@ -1,12 +1,92 @@
 'use client'
 
-import React from 'react'
-import { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import TypewriterText from '../../components/ui/TypewriterText'
 import { projects } from '../../data/projects'
 import Image from 'next/image'
+
+const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
+
+const materialIconUrls: Record<string, string> = {
+    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
+    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
+    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
+    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
+}
+
+const TAG_ICON_MAP: Record<string, { slug: string; color?: string }> = {
+  'React': { slug: 'react' },
+  'Java': { slug: 'openjdk' },
+  'Springboot': { slug: 'springboot' },
+  'MariaDB': { slug: 'mariadb' },
+  'Vue.js': { slug: 'vuedotjs' },
+  'Laravel': { slug: 'laravel' },
+  'MySQL': { slug: 'mysql' },
+  'Stripe': { slug: 'stripe' },
+  'Next.js': { slug: 'nextdotjs', color: 'white' },
+  'BetterAuth': { slug: 'betterauth', color: 'white' },
+  'Tailwind CSS': { slug: 'tailwindcss' },
+  'MongoDB': { slug: 'mongodb' },
+  'Express.js': { slug: 'express', color: 'white' },
+  'Node.js': { slug: 'nodedotjs' },
+  'Digital Ocean': { slug: 'digitalocean' },
+}
+
+function getTagIconUrl(tag: string): string {
+  const config = TAG_ICON_MAP[tag]
+  if (config) {
+    return config.color
+      ? `https://cdn.simpleicons.org/${config.slug}/${config.color}`
+      : `https://cdn.simpleicons.org/${config.slug}`
+  }
+  const slug = tag.toLowerCase().replace(/\.js$/, 'dotjs').replace(/[\s\.\-]/g, '')
+  return `https://cdn.simpleicons.org/${slug}`
+}
+
+function ProjectTechTag({ tag, index, tagIndex }: { tag: string; index: number; tagIndex: number }) {
+  const [hasError, setHasError] = useState(false)
+  const iconUrl = getTagIconUrl(tag)
+
+  return (
+    <span
+      title={tag}
+      style={{
+        width: "fit-content",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: hasError ? "2px 10px" : "6px 8px",
+        fontSize: "11px",
+        backgroundColor: "#252526",
+        border: "1px solid #3e3e3e",
+        borderRadius: "2px",
+        fontFamily: "var(--font-mono)",
+      }}
+    >
+      {!hasError ? (
+        <Image
+          src={iconUrl}
+          alt={tag}
+          width={16}
+          height={16}
+          style={{ width: '16px', height: '16px', objectFit: 'contain', flexShrink: 0 }}
+          unoptimized
+          onError={() => setHasError(true)}
+        />
+      ) : (
+        <TypewriterText
+          text={tag}
+          tag="span"
+          className="text-[#9cdcfe]"
+          delay={index * 100 + 400 + tagIndex * 50}
+          speed={15}
+        />
+      )}
+    </span>
+  )
+}
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
     const ref = useRef(null)
@@ -24,10 +104,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           padding: "clamp(16px, 5vw, 32px)",
         }}
       >
-        <div className="flex flex-col gap-5 md:mr-6" style={{ minWidth: "400px" }}>
+        <div className="flex flex-col gap-5 md:mr-6 w-full md:w-[380px] lg:w-[400px] shrink-0">
           {/* Project image and status */}
           <div
-            className="w-100 shrink-0"
+            className="w-full shrink-0"
             style={{
               height: "250px",
               backgroundColor: "#2d2d2d",
@@ -115,30 +195,16 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             </div>
           </div>
 
-          <div className="flex items-start justify-between gap-2 max-w-100">
+          <div className="flex items-center justify-between gap-2 w-full">
             {/* Tags */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {project.tags.map((tag, tagIndex) => (
-                <span
+                  <ProjectTechTag
                     key={tag}
-                    style={{
-                        width: "fit-content",
-                        padding: "2px 10px",
-                        fontSize: "11px",
-                        backgroundColor: "#2d2d2d",
-                        border: "1px solid #3e3e3e",
-                        borderRadius: "2px",
-                    fontFamily: "var(--font-mono)",
-                    }}
-                >
-                    <TypewriterText
-                    text={tag}
-                    tag="span"
-                    className="text-[#9cdcfe]"
-                    delay={index * 100 + 400 + tagIndex * 50}
-                    speed={15}
-                    />
-                </span>
+                    tag={tag}
+                    index={index}
+                    tagIndex={tagIndex}
+                  />
                 ))}
             </div>
             <a
@@ -311,10 +377,7 @@ export default function Projects() {
 
             {/* Project list */}
             <div
-                className="grid grid-rows-1 md:grid-rows-2 lg:grid-rows-4"
-                style={{
-                    gap: 'clamp(16px, 4vw, 24px)',
-                }}
+                className="flex flex-col gap-6 md:gap-8"
             >
                 {projects.map((project, i) => (
                     <ProjectCard key={project.id} project={project} index={i} />

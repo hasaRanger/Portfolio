@@ -14,7 +14,7 @@ const securityHeaders = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://cdn.jsdelivr.net https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "img-src 'self' data: blob: https://res.cloudinary.com https://cdn.jsdelivr.net https://www.nadeesha.dev",
+      "img-src 'self' data: blob: https://res.cloudinary.com https://cdn.jsdelivr.net https://cdn.simpleicons.org https://www.nadeesha.dev",
       "font-src 'self' data: https://fonts.gstatic.com",
       "connect-src 'self' https://va.vercel-scripts.com https://challenges.cloudflare.com",
       "frame-src 'self' https://challenges.cloudflare.com",

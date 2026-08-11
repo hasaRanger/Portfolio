@@ -102,7 +102,7 @@ function TechGroup({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
           gap: '8px',
         }}
       >

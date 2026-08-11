@@ -23,7 +23,7 @@ const tabs = [
 ]
 
 export default function MobileTabBar() {
-  const [active, setActive] = useState('ABOUT.MD')
+  const [active, setActive] = useState('About.md')
 
   useEffect(() => {
     const scrollParent = document.getElementById('mobile-main')
@@ -72,7 +72,7 @@ export default function MobileTabBar() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 12px', height: '36px', borderBottom: '1px solid #1e1e1e',
       }}>
-        <button onClick={() => handleTabClick('m-hero', 'ABOUT.MD')}>
+        <button onClick={() => handleTabClick('m-hero', 'About.md')}>
             <Image 
             src={Logo} 
             alt="Logo" 
