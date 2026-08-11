@@ -9,37 +9,44 @@ import Image from 'next/image'
 
 const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
 
-const materialIconUrls: Record<string, string> = {
-    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
-    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
-    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
-    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
+const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
+
+const iconUrl = (icon: string) => {
+  const overrides: Record<string, string> = {
+    express:        `${DEVICON_BASE}/express/express-original.svg`,
+    spring:         `${DEVICON_BASE}/spring/spring-original.svg`,
+    java:           `${DEVICON_BASE}/java/java-original.svg`,
+  }
+  return overrides[icon] ?? `${DEVICON_BASE}/${icon}/${icon}-original.svg`
 }
 
-const TAG_ICON_MAP: Record<string, { slug: string; color?: string }> = {
-  'React': { slug: 'react' },
-  'Java': { slug: 'openjdk' },
-  'Springboot': { slug: 'springboot' },
-  'MariaDB': { slug: 'mariadb' },
-  'Vue.js': { slug: 'vuedotjs' },
-  'Laravel': { slug: 'laravel' },
-  'MySQL': { slug: 'mysql' },
-  'Stripe': { slug: 'stripe' },
-  'Next.js': { slug: 'nextdotjs', color: 'white' },
-  'BetterAuth': { slug: 'betterauth', color: 'white' },
-  'Tailwind CSS': { slug: 'tailwindcss' },
-  'MongoDB': { slug: 'mongodb' },
-  'Express.js': { slug: 'express', color: 'white' },
-  'Node.js': { slug: 'nodedotjs' },
-  'Digital Ocean': { slug: 'digitalocean' },
+const TAG_ICON_MAP: Record<string, { devicon?: string; simpleicon?: {slug: string, color?: string} }> = {
+  'React': { devicon: 'react' },
+  'Java': { devicon: 'java' },
+  'Springboot': { devicon: 'spring' },
+  'MariaDB': { devicon: 'mariadb' },
+  'Vue.js': { devicon: 'vuejs' },
+  'Laravel': { devicon: 'laravel' },
+  'MySQL': { devicon: 'mysql' },
+  'Stripe': { simpleicon: { slug: 'stripe' } },
+  'Next.js': { devicon: 'nextjs' },
+  'BetterAuth': { simpleicon: { slug: 'betterauth', color: 'white' } },
+  'Tailwind CSS': { devicon: 'tailwindcss' },
+  'MongoDB': { devicon: 'mongodb' },
+  'Express.js': { devicon: 'express' },
+  'Node.js': { devicon: 'nodejs' },
+  'Digital Ocean': { devicon: 'digitalocean' },
 }
 
 function getTagIconUrl(tag: string): string {
   const config = TAG_ICON_MAP[tag]
-  if (config) {
-    return config.color
-      ? `https://cdn.simpleicons.org/${config.slug}/${config.color}`
-      : `https://cdn.simpleicons.org/${config.slug}`
+  if (config?.simpleicon) {
+    return config.simpleicon.color
+      ? `https://cdn.simpleicons.org/${config.simpleicon.slug}/${config.simpleicon.color}`
+      : `https://cdn.simpleicons.org/${config.simpleicon.slug}`
+  }
+  if (config?.devicon) {
+    return iconUrl(config.devicon)
   }
   const slug = tag.toLowerCase().replace(/\.js$/, 'dotjs').replace(/[\s\.\-]/g, '')
   return `https://cdn.simpleicons.org/${slug}`
@@ -104,7 +111,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           padding: "clamp(16px, 5vw, 32px)",
         }}
       >
-        <div className="flex flex-col gap-5 md:mr-6 w-full md:w-[380px] lg:w-[400px] shrink-0">
+        <div className="flex flex-col gap-5 md:mr-6 w-full md:w-95 lg:w-100 shrink-0">
           {/* Project image and status */}
           <div
             className="w-full shrink-0"
