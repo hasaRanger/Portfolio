@@ -28,9 +28,7 @@ function TechItem({ name, icon, delay }: { name: string; icon: string; delay: nu
       }}
     >
       <AppIcon name={icon || name} size={16} showFallbackText={false} />
-      <span style={{ fontSize: '11px', color: '#9cdcfe', whiteSpace: 'nowrap' }}>
-        {name}
-      </span>
+      <span style={{ fontSize: '11px', color: '#9cdcfe', whiteSpace: 'normal' }}>{name}</span>
     </div>
   )
 }
@@ -59,8 +57,8 @@ function TechGroup({
       </p>
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
           gap: '8px',
         }}
       >
