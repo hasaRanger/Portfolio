@@ -6,21 +6,13 @@ import LiveClock from '../../components/ui/LiveClock'
 import Image from 'next/image'
 import { useActiveFile } from '@/app/context/ActiveFileContext'
 
-const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
-
-const materialIconUrls: Record<string, string> = {
-    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
-    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
-    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
-    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
-}
+import AppIcon from '../../components/ui/AppIcon'
 
 const tabs = [
-    { label: 'About.md', href: '#hero', icon: <Image src={materialIconUrls.codeowner} alt="About" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
-    // { label: 'EXPERIENCE.LOG', href: '#experience', icon: <BriefcaseBusiness size={9} />, color: '#6a9955' },
-    { label: 'Work.done', href: '#projects', icon: <Image src={materialIconUrls.folder_project} alt="Work" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
-    { label: 'Tech.stack', href: '#techstack', icon: <Image src={materialIconUrls.folder_controller} alt="Tech" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
-    { label: 'Contact.me', href: '#contact', icon: <Image src={materialIconUrls.folder_contract} alt="Contact" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" unoptimized /> },
+    { label: 'About.md', href: '#hero', icon: <AppIcon name="codeowner" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'Work.done', href: '#projects', icon: <AppIcon name="folder_project" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'Tech.stack', href: '#techstack', icon: <AppIcon name="folder_controller" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'Contact.me', href: '#contact', icon: <AppIcon name="folder_contract" size={14} className="w-3.5 h-3.5" /> },
 ]
 
 export default function TabBar() {

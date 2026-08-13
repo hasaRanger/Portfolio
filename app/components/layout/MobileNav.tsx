@@ -4,36 +4,11 @@ import { Files, Search, FileDown } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
 
-const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
-
-const deviconUrls: Record<string, string> = {
-    github: `${DEVICON_BASE}/github/github-original.svg`,
-    gitlab: `${DEVICON_BASE}/gitlab/gitlab-original.svg`,
-    linkedin: `${DEVICON_BASE}/linkedin/linkedin-original.svg`,
-    facebook: `${DEVICON_BASE}/facebook/facebook-original.svg`,
-    twitter: `${DEVICON_BASE}/twitter/twitter-original.svg`,
-    discord: `${DEVICON_BASE}/discord/discord-plain.svg`,
-    npm: `${DEVICON_BASE}/npm/npm-original.svg`,
-}
+import AppIcon from '../ui/AppIcon'
 
 function DeviconOrFallback({ devicon, fallback, name }: { devicon?: string, fallback: React.ReactNode, name: string }) {
-    const [error, setError] = useState(false)
-    
-    if (!devicon || error) return <>{fallback}</>
-    
-    const src = deviconUrls[devicon] || `${DEVICON_BASE}/${devicon}/${devicon}-original.svg`
-        
-    return (
-        <Image
-            src={src}
-            alt={name}
-            width={18}
-            height={18}
-            className="w-[18px] h-[18px] object-contain shrink-0"
-            onError={() => setError(true)}
-            unoptimized
-        />
-    )
+    if (!devicon) return <>{fallback}</>
+    return <AppIcon name={devicon} size={18} className="w-[18px] h-[18px]" showFallbackText={false} />
 }
 
 type SocialLink = {

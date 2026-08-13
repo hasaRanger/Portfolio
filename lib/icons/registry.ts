@@ -1,0 +1,53 @@
+import { IconEntry } from './types';
+
+export const ICON_REGISTRY: Record<string, IconEntry> = {
+  // Technologies & Frameworks
+  react:         { displayName: 'React', devicon: 'react', simpleicon: { slug: 'react' } },
+  java:          { displayName: 'Java', devicon: 'java', simpleicon: { slug: 'openjdk' } },
+  springboot:    { displayName: 'Spring Boot', aliases: ['spring', 'spring boot'], devicon: { slug: 'spring', variant: 'original' }, simpleicon: { slug: 'springboot' } },
+  spring:        { displayName: 'Spring', devicon: { slug: 'spring', variant: 'original' }, simpleicon: { slug: 'springboot' } },
+  jaxrs:         { displayName: 'JAX-RS', devicon: { slug: 'java', variant: 'plain' }, simpleicon: { slug: 'openjdk' } },
+  mariadb:       { displayName: 'MariaDB', devicon: 'mariadb', simpleicon: { slug: 'mariadb' } },
+  vuejs:         { displayName: 'Vue.js', aliases: ['vue', 'vue.js'], devicon: 'vuejs', simpleicon: { slug: 'vuedotjs' } },
+  laravel:       { displayName: 'Laravel', devicon: 'laravel', simpleicon: { slug: 'laravel' } },
+  mysql:         { displayName: 'MySQL', devicon: 'mysql', simpleicon: { slug: 'mysql' } },
+  stripe:        { displayName: 'Stripe', pinnedProvider: 'simpleicons', simpleicon: { slug: 'stripe' } },
+  nextjs:        { displayName: 'Next.js', aliases: ['next.js'], pinnedProvider: 'simpleicons', devicon: 'nextjs', simpleicon: { slug: 'nextdotjs', color: 'white' } },
+  betterauth:    { displayName: 'BetterAuth', pinnedProvider: 'simpleicons', simpleicon: { slug: 'betterauth', color: 'white' } },
+  tailwindcss:   { displayName: 'Tailwind CSS', aliases: ['tailwind', 'tailwind css'], devicon: 'tailwindcss', simpleicon: { slug: 'tailwindcss' } },
+  mongodb:       { displayName: 'MongoDB', devicon: 'mongodb', simpleicon: { slug: 'mongodb' } },
+  express:       { displayName: 'Express.js', aliases: ['express.js'], pinnedProvider: 'simpleicons', devicon: 'express', simpleicon: { slug: 'express', color: 'white' } },
+  nodejs:        { displayName: 'Node.js', aliases: ['node.js', 'node'], devicon: 'nodejs', simpleicon: { slug: 'nodedotjs' } },
+  digitalocean:  { displayName: 'DigitalOcean', aliases: ['digital ocean'], devicon: 'digitalocean', simpleicon: { slug: 'digitalocean' } },
+  vite:          { displayName: 'Vite', devicon: 'vite', simpleicon: { slug: 'vite' } },
+  postman:       { displayName: 'Postman', devicon: 'postman', simpleicon: { slug: 'postman' } },
+  vercel:        { displayName: 'Vercel', devicon: 'vercel', simpleicon: { slug: 'vercel', color: 'white' } },
+  canva:         { displayName: 'Canva', devicon: 'canva', simpleicon: { slug: 'canva' } },
+  photoshop:     { displayName: 'Photoshop', devicon: 'photoshop', simpleicon: { slug: 'adobephotoshop' } },
+  premierpro:    { displayName: 'Premiere Pro', aliases: ['premierepro'], devicon: { slug: 'premierepro', variant: 'original' }, simpleicon: { slug: 'adobepremierepro' } },
+  linux:         { displayName: 'Linux', devicon: 'linux', simpleicon: { slug: 'linux' } },
+  git:           { displayName: 'Git', devicon: 'git', simpleicon: { slug: 'git' } },
+  postgresql:    { displayName: 'PostgreSQL', devicon: 'postgresql', simpleicon: { slug: 'postgresql' } },
+  prisma:        { displayName: 'Prisma', devicon: 'prisma', simpleicon: { slug: 'prisma' } },
+  bun:           { displayName: 'Bun', devicon: 'bun', simpleicon: { slug: 'bun' } },
+  nginx:         { displayName: 'Nginx', devicon: 'nginx', simpleicon: { slug: 'nginx' } },
+  androidstudio: { displayName: 'Android Studio', aliases: ['android studio'], devicon: 'androidstudio', simpleicon: { slug: 'androidstudio' } },
+  githubactions: { displayName: 'GitHub Actions', aliases: ['github actions'], devicon: 'githubactions', simpleicon: { slug: 'githubactions' } },
+  blender:       { displayName: 'Blender', devicon: 'blender', simpleicon: { slug: 'blender' } },
+  bootstrap:     { displayName: 'Bootstrap', devicon: 'bootstrap', simpleicon: { slug: 'bootstrap' } },
+
+  // Social & Platform Icons
+  github:        { displayName: 'GitHub', devicon: 'github', simpleicon: { slug: 'github' } },
+  gitlab:        { displayName: 'GitLab', devicon: 'gitlab', simpleicon: { slug: 'gitlab' } },
+  linkedin:      { displayName: 'LinkedIn', devicon: 'linkedin', simpleicon: { slug: 'linkedin' } },
+  facebook:      { displayName: 'Facebook', devicon: 'facebook', simpleicon: { slug: 'facebook' } },
+  twitter:       { displayName: 'Twitter', devicon: 'twitter', simpleicon: { slug: 'twitter' } },
+  discord:       { displayName: 'Discord', devicon: { slug: 'discord', variant: 'plain' }, simpleicon: { slug: 'discord' } },
+  npm:           { displayName: 'npm', devicon: 'npm', simpleicon: { slug: 'npm' } },
+
+  // System & IDE Material Theme Icons
+  codeowner:         { displayName: 'Codeowners', materialIcon: 'codeowners.svg' },
+  folder_project:    { displayName: 'Projects', aliases: ['folderproject'], materialIcon: 'folder-project.svg' },
+  folder_controller: { displayName: 'Controller', aliases: ['foldercontroller'], materialIcon: 'folder-controller.svg' },
+  folder_contract:   { displayName: 'Contract', aliases: ['foldercontract'], materialIcon: 'folder-contract.svg' },
+};

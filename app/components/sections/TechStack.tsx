@@ -6,39 +6,7 @@ import Image from 'next/image'
 import TypewriterText from '../../components/ui/TypewriterText'
 import { techStack } from '../../data/techstack'
 
-const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
-
-const iconUrl = (icon: string) => {
-  const overrides: Record<string, string> = {
-    nextjs:         `${DEVICON_BASE}/nextjs/nextjs-original.svg`,
-    vite:           `${DEVICON_BASE}/vite/vite-original.svg`,
-    tailwindcss:    `${DEVICON_BASE}/tailwindcss/tailwindcss-original.svg`,
-    express:        `${DEVICON_BASE}/express/express-original.svg`,
-    spring:         `${DEVICON_BASE}/spring/spring-original.svg`,
-    java:           `${DEVICON_BASE}/java/java-original.svg`,
-    jaxrs:          `${DEVICON_BASE}/java/java-plain.svg`,
-    mariadb:        `${DEVICON_BASE}/mariadb/mariadb-original.svg`,
-    postman:        `${DEVICON_BASE}/postman/postman-original.svg`,
-    vercel:         `${DEVICON_BASE}/vercel/vercel-original.svg`,
-    digitalocean:   `${DEVICON_BASE}/digitalocean/digitalocean-original.svg`,
-    canva:          `${DEVICON_BASE}/canva/canva-original.svg`,
-    photoshop:      `${DEVICON_BASE}/photoshop/photoshop-original.svg`,
-    premierpro:     `${DEVICON_BASE}/premierepro/premierepro-original.svg`,
-    linux:          `${DEVICON_BASE}/linux/linux-original.svg`,
-    git:            `${DEVICON_BASE}/git/git-original.svg`,
-    postgresql:     `${DEVICON_BASE}/postgresql/postgresql-original.svg`,
-    prisma:         `${DEVICON_BASE}/prisma/prisma-original.svg`,
-    laravel:        `${DEVICON_BASE}/laravel/laravel-original.svg`,
-    vuejs:          `${DEVICON_BASE}/vuejs/vuejs-original.svg`,
-    bun:            `${DEVICON_BASE}/bun/bun-original.svg`,
-    nginx:          `${DEVICON_BASE}/nginx/nginx-original.svg`,
-    androidstudio:  `${DEVICON_BASE}/androidstudio/androidstudio-original.svg`,
-    githubactions:  `${DEVICON_BASE}/githubactions/githubactions-original.svg`,
-    blender:        `${DEVICON_BASE}/blender/blender-original.svg`,
-    bootstrap:      `${DEVICON_BASE}/bootstrap/bootstrap-original.svg`,
-  }
-  return overrides[icon] ?? `${DEVICON_BASE}/${icon}/${icon}-original.svg`
-}
+import AppIcon from '../../components/ui/AppIcon'
 
 function TechItem({ name, icon, delay }: { name: string; icon: string; delay: number }) {
   const ref = useRef(null)
@@ -59,17 +27,7 @@ function TechItem({ name, icon, delay }: { name: string; icon: string; delay: nu
         transition: `opacity 0.4s ease ${delay}s, transform 0.4s ease ${delay}s`,
       }}
     >
-      <Image
-        src={iconUrl(icon)}
-        alt={name}
-        width={16}
-        height={16}
-        style={{ width: '16px', height: '16px', objectFit: 'contain', flexShrink: 0 }}
-        unoptimized
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.display = 'none'
-        }}
-      />
+      <AppIcon name={icon || name} size={16} showFallbackText={false} />
       <span style={{ fontSize: '11px', color: '#9cdcfe', whiteSpace: 'nowrap' }}>
         {name}
       </span>

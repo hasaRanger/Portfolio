@@ -18,44 +18,11 @@ interface SocialLink {
     border?: string
 }
 
-const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
-const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
-
-const materialIconUrls: Record<string, string> = {
-    codeowner: `${MATERIAL_ICONS_BASE}/codeowners.svg`,
-    folder_project: `${MATERIAL_ICONS_BASE}/folder-project.svg`,
-    folder_controller: `${MATERIAL_ICONS_BASE}/folder-controller.svg`,
-    folder_contract: `${MATERIAL_ICONS_BASE}/folder-contract.svg`,
-}
-
-const deviconUrls: Record<string, string> = {
-    github: `${DEVICON_BASE}/github/github-original.svg`,
-    gitlab: `${DEVICON_BASE}/gitlab/gitlab-original.svg`,
-    linkedin: `${DEVICON_BASE}/linkedin/linkedin-original.svg`,
-    facebook: `${DEVICON_BASE}/facebook/facebook-original.svg`,
-    twitter: `${DEVICON_BASE}/twitter/twitter-original.svg`,
-    discord: `${DEVICON_BASE}/discord/discord-plain.svg`,
-    npm: `${DEVICON_BASE}/npm/npm-original.svg`,
-}
+import AppIcon from '../ui/AppIcon'
 
 function DeviconOrFallback({ devicon, fallback, name }: { devicon?: string, fallback: React.ReactNode, name: string }) {
-    const [error, setError] = useState(false)
-    
-    if (!devicon || error) return <>{fallback}</>
-    
-    const src = deviconUrls[devicon] || `${DEVICON_BASE}/${devicon}/${devicon}-original.svg`
-        
-    return (
-        <Image
-            src={src}
-            alt={name}
-            width={18}
-            height={18}
-            className="w-4.5 h-4.5 object-contain shrink-0"
-            onError={() => setError(true)}
-            unoptimized
-        />
-    )
+    if (!devicon) return <>{fallback}</>
+    return <AppIcon name={devicon} size={18} className="w-4.5 h-4.5" showFallbackText={false} />
 }
 
 // ─── Nav icons ────────────────────────────────────────────────────────────────
@@ -66,11 +33,11 @@ const navIcons = [
 
 // ─── Explorer items ────────────────────────────────────────────────────────────
 const explorerItems: { label: FileLabel; href: string; color: string; icon: React.ReactNode }[] = [
-    { label: 'About.md', href: '#hero', color: '#4ec9b0', icon: <Image src={materialIconUrls.codeowner} alt="Codeowner" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
+    { label: 'About.md', href: '#hero', color: '#4ec9b0', icon: <AppIcon name="codeowner" size={18} className="w-4.5 h-4.5" /> },
     // { label: 'Experience.log', href: '#experience', color: '#6a9955', icon: <BriefcaseBusiness size={14} /> },
-    { label: 'Work.done', href: '#projects', color: '#569cd6', icon: <Image src={materialIconUrls.folder_project} alt="Folder Project" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
-    { label: 'Tech.stack', href: '#techstack', color: '#c586c0', icon: <Image src={materialIconUrls.folder_controller} alt="Folder Controller" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
-    { label: 'Contact.me', href: '#contact', color: '#ce9178', icon: <Image src={materialIconUrls.folder_contract} alt="Folder Contract" width={18} height={18} className="w-4.5 h-4.5 object-contain shrink-0" /> },
+    { label: 'Work.done', href: '#projects', color: '#569cd6', icon: <AppIcon name="folder_project" size={18} className="w-4.5 h-4.5" /> },
+    { label: 'Tech.stack', href: '#techstack', color: '#c586c0', icon: <AppIcon name="folder_controller" size={18} className="w-4.5 h-4.5" /> },
+    { label: 'Contact.me', href: '#contact', color: '#ce9178', icon: <AppIcon name="folder_contract" size={18} className="w-4.5 h-4.5" /> },
 ]
 
 // ─── Social links ──────────────────────────────────────────────────────────────

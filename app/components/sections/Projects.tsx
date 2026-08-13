@@ -7,56 +7,9 @@ import TypewriterText from '../../components/ui/TypewriterText'
 import { projects } from '../../data/projects'
 import Image from 'next/image'
 
-const MATERIAL_ICONS_BASE = 'https://cdn.jsdelivr.net/gh/material-extensions/vscode-material-icon-theme@main/icons'
+import AppIcon from '../../components/ui/AppIcon'
 
-const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
-
-const iconUrl = (icon: string) => {
-  const overrides: Record<string, string> = {
-    express:        `${DEVICON_BASE}/express/express-original.svg`,
-    spring:         `${DEVICON_BASE}/spring/spring-original.svg`,
-    java:           `${DEVICON_BASE}/java/java-original.svg`,
-  }
-  return overrides[icon] ?? `${DEVICON_BASE}/${icon}/${icon}-original.svg`
-}
-
-const TAG_ICON_MAP: Record<string, { devicon?: string; simpleicon?: {slug: string, color?: string}; invert?: boolean }> = {
-  'React': { devicon: 'react' },
-  'Java': { devicon: 'java' },
-  'Springboot': { devicon: 'spring' },
-  'MariaDB': { devicon: 'mariadb' },
-  'Vue.js': { devicon: 'vuejs' },
-  'Laravel': { devicon: 'laravel' },
-  'MySQL': { devicon: 'mysql' },
-  'Stripe': { simpleicon: { slug: 'stripe' } },
-  'Next.js': { simpleicon: { slug: 'nextdotjs', color: 'white' } },
-  'BetterAuth': { simpleicon: { slug: 'betterauth', color: 'white' } },
-  'Tailwind CSS': { devicon: 'tailwindcss' },
-  'MongoDB': { devicon: 'mongodb' },
-  'Express.js': { simpleicon: { slug: 'express', color: 'white' } },
-  'Node.js': { devicon: 'nodejs' },
-  'Digital Ocean': { devicon: 'digitalocean' },
-}
-
-function getTagIconUrl(tag: string): string {
-  const config = TAG_ICON_MAP[tag]
-  if (config?.simpleicon) {
-    return config.simpleicon.color
-      ? `https://cdn.simpleicons.org/${config.simpleicon.slug}/${config.simpleicon.color}`
-      : `https://cdn.simpleicons.org/${config.simpleicon.slug}`
-  }
-  if (config?.devicon) {
-    return iconUrl(config.devicon)
-  }
-  const slug = tag.toLowerCase().replace(/\.js$/, 'dotjs').replace(/[\s\.\-]/g, '')
-  return `https://cdn.simpleicons.org/${slug}`
-}
-
-function ProjectTechTag({ tag, index, tagIndex }: { tag: string; index: number; tagIndex: number }) {
-  const [hasError, setHasError] = useState(false)
-  const config = TAG_ICON_MAP[tag]
-  const iconUrl = getTagIconUrl(tag)
-
+function ProjectTechTag({ tag }: { tag: string }) {
   return (
     <span
       title={tag}
@@ -65,7 +18,7 @@ function ProjectTechTag({ tag, index, tagIndex }: { tag: string; index: number; 
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: hasError ? "2px 10px" : "6px 8px",
+        padding: "6px 8px",
         fontSize: "11px",
         backgroundColor: "#252526",
         border: "1px solid #3e3e3e",
@@ -73,31 +26,7 @@ function ProjectTechTag({ tag, index, tagIndex }: { tag: string; index: number; 
         fontFamily: "var(--font-mono)",
       }}
     >
-      {!hasError ? (
-        <Image
-          src={iconUrl}
-          alt={tag}
-          width={16}
-          height={16}
-          style={{
-            width: '16px',
-            height: '16px',
-            objectFit: 'contain',
-            flexShrink: 0,
-            filter: config?.invert ? 'brightness(0) invert(1)' : undefined,
-          }}
-          unoptimized
-          onError={() => setHasError(true)}
-        />
-      ) : (
-        <TypewriterText
-          text={tag}
-          tag="span"
-          className="text-[#9cdcfe]"
-          delay={index * 100 + 400 + tagIndex * 50}
-          speed={15}
-        />
-      )}
+      <AppIcon name={tag} size={16} />
     </span>
   )
 }
@@ -212,12 +141,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           <div className="flex items-start justify-between gap-2 w-full">
             {/* Tags */}
             <div className='flex flex-wrap gap-3'>
-                {project.tags.map((tag, tagIndex) => (
+                {project.tags.map((tag) => (
                   <ProjectTechTag
                     key={tag}
                     tag={tag}
-                    index={index}
-                    tagIndex={tagIndex}
                   />
                 ))}
             </div>
