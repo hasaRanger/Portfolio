@@ -202,7 +202,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-2 w-full">
+          <div className="flex items-start justify-between gap-2 w-full">
             {/* Tags */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {project.tags.map((tag, tagIndex) => (
