@@ -78,9 +78,8 @@ export function getCandidateUrls(
       if (entry?.simpleicon) {
         const { slug, color } = entry.simpleicon;
         urls.push(color ? `https://cdn.simpleicons.org/${slug}/${color}` : `https://cdn.simpleicons.org/${slug}`);
-      } else if (!entry) {
-        const simpleSlug = normalizedKey.replace(/dotjs$/, 'dotjs');
-        urls.push(`https://cdn.simpleicons.org/${simpleSlug}`);
+      } else {
+        urls.push(`https://cdn.simpleicons.org/${normalizedKey}`);
       }
     } else if (providerId === 'material') {
       if (entry?.materialIcon) {
