@@ -20,7 +20,7 @@ const iconUrl = (icon: string) => {
   return overrides[icon] ?? `${DEVICON_BASE}/${icon}/${icon}-original.svg`
 }
 
-const TAG_ICON_MAP: Record<string, { devicon?: string; simpleicon?: {slug: string, color?: string} }> = {
+const TAG_ICON_MAP: Record<string, { devicon?: string; simpleicon?: {slug: string, color?: string}; invert?: boolean }> = {
   'React': { devicon: 'react' },
   'Java': { devicon: 'java' },
   'Springboot': { devicon: 'spring' },
@@ -29,11 +29,11 @@ const TAG_ICON_MAP: Record<string, { devicon?: string; simpleicon?: {slug: strin
   'Laravel': { devicon: 'laravel' },
   'MySQL': { devicon: 'mysql' },
   'Stripe': { simpleicon: { slug: 'stripe' } },
-  'Next.js': { devicon: 'nextjs' },
+  'Next.js': { simpleicon: { slug: 'nextdotjs', color: 'white' } },
   'BetterAuth': { simpleicon: { slug: 'betterauth', color: 'white' } },
   'Tailwind CSS': { devicon: 'tailwindcss' },
   'MongoDB': { devicon: 'mongodb' },
-  'Express.js': { devicon: 'express' },
+  'Express.js': { simpleicon: { slug: 'express', color: 'white' } },
   'Node.js': { devicon: 'nodejs' },
   'Digital Ocean': { devicon: 'digitalocean' },
 }
@@ -54,6 +54,7 @@ function getTagIconUrl(tag: string): string {
 
 function ProjectTechTag({ tag, index, tagIndex }: { tag: string; index: number; tagIndex: number }) {
   const [hasError, setHasError] = useState(false)
+  const config = TAG_ICON_MAP[tag]
   const iconUrl = getTagIconUrl(tag)
 
   return (
@@ -78,7 +79,13 @@ function ProjectTechTag({ tag, index, tagIndex }: { tag: string; index: number; 
           alt={tag}
           width={16}
           height={16}
-          style={{ width: '16px', height: '16px', objectFit: 'contain', flexShrink: 0 }}
+          style={{
+            width: '16px',
+            height: '16px',
+            objectFit: 'contain',
+            flexShrink: 0,
+            filter: config?.invert ? 'brightness(0) invert(1)' : undefined,
+          }}
           unoptimized
           onError={() => setHasError(true)}
         />
@@ -204,7 +211,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
           <div className="flex items-start justify-between gap-2 w-full">
             {/* Tags */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            <div className='flex flex-wrap gap-3'>
                 {project.tags.map((tag, tagIndex) => (
                   <ProjectTechTag
                     key={tag}
