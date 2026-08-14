@@ -9,10 +9,10 @@ import { useActiveFile } from '@/app/context/ActiveFileContext'
 import AppIcon from '../../components/ui/AppIcon'
 
 const tabs = [
-    { label: 'About.md', href: '#hero', icon: <AppIcon name="codeowner" size={14} className="w-3.5 h-3.5" /> },
-    { label: 'Work.done', href: '#projects', icon: <AppIcon name="folder_project" size={14} className="w-3.5 h-3.5" /> },
-    { label: 'Tech.stack', href: '#techstack', icon: <AppIcon name="folder_controller" size={14} className="w-3.5 h-3.5" /> },
-    { label: 'Contact.me', href: '#contact', icon: <AppIcon name="folder_contract" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'About.md', href: '#hero', icon: <AppIcon name="codeowner" provider="material" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'Work.done', href: '#projects', icon: <AppIcon name="folder_project" provider="material" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'Tech.stack', href: '#techstack', icon: <AppIcon name="folder_controller" provider="material" size={14} className="w-3.5 h-3.5" /> },
+    { label: 'Contact.me', href: '#contact', icon: <AppIcon name="folder_contract" provider="material" size={14} className="w-3.5 h-3.5" /> },
 ]
 
 export default function TabBar() {

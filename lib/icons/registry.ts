@@ -24,6 +24,12 @@ export const ICON_REGISTRY: Record<string, IconEntry> = {
   vercel:        { displayName: 'Vercel', devicon: 'vercel', simpleicon: { slug: 'vercel', color: 'fff' } },
   canva:         { displayName: 'Canva', devicon: 'canva', simpleicon: { slug: 'canva' } },
   photoshop:     { displayName: 'Photoshop', devicon: 'photoshop', simpleicon: { slug: 'adobephotoshop' } },
+  
+  // File and Folder Icons
+  codeowner:         { displayName: 'Codeowners', pinnedProvider: 'material', materialIcon: 'codeowners.svg' },
+  folder_project:    { displayName: 'Projects', pinnedProvider: 'material', materialIcon: 'folder-project.svg' },
+  folder_controller: { displayName: 'Controllers', pinnedProvider: 'material', materialIcon: 'folder-controller.svg' },
+  folder_contract:   { displayName: 'Contracts', pinnedProvider: 'material', materialIcon: 'folder-contract.svg' },
   premierpro:    { displayName: 'Premiere Pro', aliases: ['premierepro'], devicon: { slug: 'premierepro', variant: 'original' }, simpleicon: { slug: 'adobepremierepro' } },
   linux:         { displayName: 'Linux', devicon: 'linux', simpleicon: { slug: 'linux' } },
   git:           { displayName: 'Git', devicon: 'git', simpleicon: { slug: 'git' } },

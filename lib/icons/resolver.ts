@@ -84,6 +84,9 @@ export function getCandidateUrls(
     } else if (providerId === 'material') {
       if (entry?.materialIcon) {
         urls.push(`${MATERIAL_BASE}/${entry.materialIcon}`);
+      } else {
+        const materialName = normalizedKey.replace(/_/g, '-');
+        urls.push(`${MATERIAL_BASE}/${materialName}.svg`);
       }
     }
   }

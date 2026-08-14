@@ -47,12 +47,11 @@ export default function AppIcon({
   }
 
   return (
-    <Image
+    <img
       src={currentUrl}
       alt={name}
       width={size}
       height={size}
-      unoptimized
       onError={handleError}
       className={`object-contain shrink-0 ${className}`}
       style={{ width: `${size}px`, height: `${size}px` }}

@@ -8,10 +8,10 @@ import Logo from '../../../public/images/logo.png'
 import AppIcon from '../../components/ui/AppIcon'
 
 const tabs = [
-  { label: 'About.md',   id: 'm-hero',      icon: <AppIcon name="codeowner" size={14} className="w-3.5 h-3.5" /> },
-  { label: 'Work.done',  id: 'm-projects',  icon: <AppIcon name="folder_project" size={14} className="w-3.5 h-3.5" /> },
-  { label: 'Tech.stack', id: 'm-techstack', icon: <AppIcon name="folder_controller" size={14} className="w-3.5 h-3.5" /> },
-  { label: 'Contact.me', id: 'm-contact',   icon: <AppIcon name="folder_contract" size={14} className="w-3.5 h-3.5" /> },
+  { label: 'About.md',   id: 'm-hero',      icon: <AppIcon name="codeowner" provider="material" size={14} className="w-3.5 h-3.5" /> },
+  { label: 'Work.done',  id: 'm-projects',  icon: <AppIcon name="folder_project" provider="material" size={14} className="w-3.5 h-3.5" /> },
+  { label: 'Tech.stack', id: 'm-techstack', icon: <AppIcon name="folder_controller" provider="material" size={14} className="w-3.5 h-3.5" /> },
+  { label: 'Contact.me', id: 'm-contact',   icon: <AppIcon name="folder_contract" provider="material" size={14} className="w-3.5 h-3.5" /> },
 ]
 
 export default function MobileTabBar() {
