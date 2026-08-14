@@ -25,6 +25,22 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   devIndicators: false,
   allowedDevOrigins: ['127.0.0.1'],
+  
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.simpleicons.org',
+      }
+    ],
+  },
 
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]
