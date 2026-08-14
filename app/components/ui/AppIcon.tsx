@@ -53,6 +53,7 @@ export default function AppIcon({
       width={size}
       height={size}
       onError={handleError}
+      referrerPolicy="no-referrer"
       className={`object-contain shrink-0 ${className}`}
       style={{ width: `${size}px`, height: `${size}px` }}
     />
