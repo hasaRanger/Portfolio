@@ -27,9 +27,9 @@ export const ICON_REGISTRY: Record<string, IconEntry> = {
   
   // File and Folder Icons
   codeowner:         { displayName: 'Codeowners', pinnedProvider: 'material', materialIcon: 'codeowners.svg' },
-  folder_project:    { displayName: 'Projects', pinnedProvider: 'material', materialIcon: 'folder-project.svg' },
-  folder_controller: { displayName: 'Controllers', pinnedProvider: 'material', materialIcon: 'folder-controller.svg' },
-  folder_contract:   { displayName: 'Contracts', pinnedProvider: 'material', materialIcon: 'folder-contract.svg' },
+  folder_project:    { displayName: 'Projects', aliases: ['folderproject'], pinnedProvider: 'material', materialIcon: 'folder-project.svg' },
+  folder_controller: { displayName: 'Controllers', aliases: ['foldercontroller'], pinnedProvider: 'material', materialIcon: 'folder-controller.svg' },
+  folder_contract:   { displayName: 'Contracts', aliases: ['foldercontract'], pinnedProvider: 'material', materialIcon: 'folder-contract.svg' },
   premierpro:    { displayName: 'Premiere Pro', aliases: ['premierepro'], devicon: { slug: 'premierepro', variant: 'original' }, simpleicon: { slug: 'adobepremierepro' } },
   linux:         { displayName: 'Linux', devicon: 'linux', simpleicon: { slug: 'linux' } },
   git:           { displayName: 'Git', devicon: 'git', simpleicon: { slug: 'git' } },
@@ -51,9 +51,4 @@ export const ICON_REGISTRY: Record<string, IconEntry> = {
   discord:       { displayName: 'Discord', devicon: { slug: 'discord', variant: 'plain' }, simpleicon: { slug: 'discord' } },
   npm:           { displayName: 'npm', devicon: 'npm', simpleicon: { slug: 'npm' } },
 
-  // System & IDE Material Theme Icons
-  codeowner:         { displayName: 'Codeowners', materialIcon: 'codeowners.svg' },
-  folder_project:    { displayName: 'Projects', aliases: ['folderproject'], materialIcon: 'folder-project.svg' },
-  folder_controller: { displayName: 'Controller', aliases: ['foldercontroller'], materialIcon: 'folder-controller.svg' },
-  folder_contract:   { displayName: 'Contract', aliases: ['foldercontract'], materialIcon: 'folder-contract.svg' },
 };
