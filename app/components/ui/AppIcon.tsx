@@ -47,13 +47,13 @@ export default function AppIcon({
   }
 
   return (
-    <img
+    <Image
       src={currentUrl}
       alt={name}
       width={size}
       height={size}
+      unoptimized
       onError={handleError}
-      referrerPolicy="no-referrer"
       className={`object-contain shrink-0 ${className}`}
       style={{ width: `${size}px`, height: `${size}px` }}
     />
