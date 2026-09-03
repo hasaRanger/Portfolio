@@ -174,7 +174,7 @@ const socialGroups: { title: string; links: SocialLink[] }[] = [
                 name: 'Discord',
                 handle: 'nadeeshahasaranga',
                 href: '#',
-                bg: '#5865f2',
+                bg: '#fff',
                 devicon: 'discord',
                 icon: (
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
